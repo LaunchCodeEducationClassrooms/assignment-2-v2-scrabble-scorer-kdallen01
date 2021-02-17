@@ -21,7 +21,7 @@ function oldScrabbleScorer(word) {
 	  for (const pointValue in oldPointStructure) {
  
 		 if (oldPointStructure[pointValue].includes(word[i])) {
-			letterPoints += `Points for '${word[i]}': ${pointValue}\n`
+			letterPoints += console.log(`Points for '${word[i]}': ${pointValue}\n`); //Edited so line prints
 		 }
  
 	  }
@@ -33,18 +33,44 @@ function oldScrabbleScorer(word) {
 // don't change the names or your program won't work as expected. //
 
 function initialPrompt() {
-   console.log("Let's play some scrabble! Enter a word:");
+   console.log("Let's play some scrabble!");
+ let enteredWord = input.question("\nEnter a word to score: "); //Added
+ oldScrabbleScorer(enteredWord); //Added
 };
 
-let simpleScore;
+//Edited below statement by adding everything between = and last ;.
+let simpleScore = function(word) {
+  word = word.toUpperCase
+  for(i = 0; i < word.length; i++) {
+    let score = score + 1;
+  }
+};
 
-let vowelBonusScore;
+//Edited below statement by adding everything between = and last ;.
+let vowelBonusScore = function(word) {
+  word = word.toUpperCase
+  for(i = 0; i < word.length; i++) {
+    if (word[i] === "A" || word[i] === "E" || word[i] === "I" || word[i] === "O" || word[i] === "U") {
+      score = score + 3;
+    } else score = score + 1;
+  }
+};
 
 let scrabbleScore;
 
-const scoringAlgorithms = [];
+//Everything between brackets was added 
+const scoringAlgorithms = [
+//  ("Simple", "Each letter is worth 1 point.", simpleScore()),
+//  ("Vowel Bonus", "Vowels are worth 3 points.", vowelBonusScore()), ("Scabble", "Uses Scrabble point system.",oldScrabbleScorer())
+];
 
-function scorerPrompt() {}
+//Added console.log lines
+function scorerPrompt() {
+  console.log("0 - Simple: One point per character");
+  console.log("1 - Vowel Bonus: Vowels are worth 3 points");
+  console.log("2 - Scrabble: Uses scrabble point system");
+  let scoreType = input.question("Enter 0, 1, or 2: ");
+}
 
 function transform() {};
 
