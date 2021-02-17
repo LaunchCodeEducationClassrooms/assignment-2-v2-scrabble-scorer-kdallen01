@@ -39,13 +39,15 @@ function initialPrompt() {
  //oldScrabbleScorer(enteredWord); //Added
 };
 
+//Added following line
+let score = "";
 //Edited below statement by adding everything between = and last ;.
 //Commented out original statement
 //let simpleScore;
 function simpleScore(word) {
   word = word.toUpperCase();
   for(i = 0; i < word.length; i++) {
-    let score = score + 1;
+    score =+ score + 1;
   }
   return score;
 }
@@ -57,25 +59,33 @@ function vowelBonusScore(word) {
   word = word.toUpperCase();
   for(i = 0; i < word.length; i++) {
     if (word[i] === "A" || word[i] === "E" || word[i] === "I" || word[i] === "O" || word[i] === "U") {
-      score = score + 3;
-    } else score = score + 1;
+      score =+ score + 3;
+    } else score =+ score + 1;
   }
-  return score
+  return score;
   }
 
-let scrabbleScore;
+//Commented out original statement
+//let scrabbleScore;
+function scrabbleScore(word) {
+  oldScrabbleScorer(word);
+  return score;
+}
 
 //Everything between brackets was added 
 const scoringAlgorithms = [
-  {name:"Simple", description:"Each letter is worth 1 point.", scorerFunction:"simpleScore(enteredWord)"},{name:"Vowel Bonus", description:"Vowels are worth 3 points.", scorerFunction:"vowelBonusScore(enteredWord)"}, {name:"Scabble", description:"Uses Scrabble point system.", scorerFunction:oldScrabbleScorer(enteredWord)}
+  {name:"Simple", description:"Each letter is worth 1 point.", scorerFunction:simpleScore(enteredWord)},{name:"Vowel Bonus", description:"Vowels are worth 3 points.", scorerFunction:vowelBonusScore(enteredWord)}, {name:"Scabble", description:"Uses Scrabble point system.", scorerFunction:oldScrabbleScorer(enteredWord)}
 ];
 
+let scoreType = ""
 //Added console.log {} and everything in between
 function scorerPrompt() {
   console.log("0 - Simple: One point per character");
   console.log("1 - Vowel Bonus: Vowels are worth 3 points");
   console.log("2 - Scrabble: Uses scrabble point system");
-  let scoreType = input.question("Enter 0, 1, or 2: ");
+  scoreType = input.question("Enter 0, 1, or 2: ");
+  console.log(scoreType);
+  return Number(scoreType);
 }
 
 
@@ -83,9 +93,20 @@ function transform() {};
 
 let newPointStructure;
 
+//Added scorerPrompt() and console.log
 function runProgram() {
    initialPrompt();
    scorerPrompt();
+  if (Number(scoreType) === 0) {
+    simpleScore(enteredWord)
+  } else if (Number(scoreType) === 1) {
+    vowelBonusScore(enteredWord)
+  } else {
+    oldScrabbleScorer(enteredWord)
+  
+  }
+  console.log(score);
+   console.log(`Score for '${enteredWord}': ${score}`);
    
 }
 
