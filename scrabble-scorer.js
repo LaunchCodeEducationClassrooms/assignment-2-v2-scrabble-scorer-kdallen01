@@ -31,10 +31,11 @@ function oldScrabbleScorer(word) {
 
 // your job is to finish writing these functions and variables that we've named //
 // don't change the names or your program won't work as expected. //
-
+let enteredWord = ""
 function initialPrompt() {
    console.log("Let's play some scrabble!");
- let enteredWord = input.question("\nEnter a word to score: "); //Added
+    enteredWord = input.question("\nEnter a word to score: "); //Added
+  return enteredWord;
  //oldScrabbleScorer(enteredWord); //Added
 };
 
@@ -59,14 +60,14 @@ function vowelBonusScore(word) {
       score = score + 3;
     } else score = score + 1;
   }
-  return score;
-}
+  return score
+  }
 
 let scrabbleScore;
 
 //Everything between brackets was added 
 const scoringAlgorithms = [
-  {name:"Simple", description:"Each letter is worth 1 point.", scorerFunction:simpleScore()},{name:"Vowel Bonus", description:"Vowels are worth 3 points.", scorerFunction:vowelBonusScore()}, {name:"Scabble", description:"Uses Scrabble point system.", scorerFunction:oldScrabbleScorer()}
+  {name:"Simple", description:"Each letter is worth 1 point.", scorerFunction:"simpleScore(enteredWord)"},{name:"Vowel Bonus", description:"Vowels are worth 3 points.", scorerFunction:"vowelBonusScore(enteredWord)"}, {name:"Scabble", description:"Uses Scrabble point system.", scorerFunction:oldScrabbleScorer(enteredWord)}
 ];
 
 //Added console.log {} and everything in between
