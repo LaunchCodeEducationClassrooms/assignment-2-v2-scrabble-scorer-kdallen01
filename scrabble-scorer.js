@@ -35,36 +35,41 @@ function oldScrabbleScorer(word) {
 function initialPrompt() {
    console.log("Let's play some scrabble!");
  let enteredWord = input.question("\nEnter a word to score: "); //Added
- oldScrabbleScorer(enteredWord); //Added
+ //oldScrabbleScorer(enteredWord); //Added
 };
 
 //Edited below statement by adding everything between = and last ;.
-let simpleScore = function(word) {
-  word = word.toUpperCase
+//Commented out original statement
+//let simpleScore;
+function simpleScore(word) {
+  word = word.toUpperCase();
   for(i = 0; i < word.length; i++) {
     let score = score + 1;
   }
-};
+  return score;
+}
 
 //Edited below statement by adding everything between = and last ;.
-let vowelBonusScore = function(word) {
-  word = word.toUpperCase
+//Commented out original statement
+//let vowelBonusScore;
+function vowelBonusScore(word) {
+  word = word.toUpperCase();
   for(i = 0; i < word.length; i++) {
     if (word[i] === "A" || word[i] === "E" || word[i] === "I" || word[i] === "O" || word[i] === "U") {
       score = score + 3;
     } else score = score + 1;
   }
-};
+  return score;
+}
 
 let scrabbleScore;
 
 //Everything between brackets was added 
 const scoringAlgorithms = [
-//  ("Simple", "Each letter is worth 1 point.", simpleScore()),
-//  ("Vowel Bonus", "Vowels are worth 3 points.", vowelBonusScore()), ("Scabble", "Uses Scrabble point system.",oldScrabbleScorer())
+  {name:"Simple", description:"Each letter is worth 1 point.", scorerFunction:simpleScore()},{name:"Vowel Bonus", description:"Vowels are worth 3 points.", scorerFunction:vowelBonusScore()}, {name:"Scabble", description:"Uses Scrabble point system.", scorerFunction:oldScrabbleScorer()}
 ];
 
-//Added console.log lines
+//Added console.log {} and everything in between
 function scorerPrompt() {
   console.log("0 - Simple: One point per character");
   console.log("1 - Vowel Bonus: Vowels are worth 3 points");
@@ -72,12 +77,14 @@ function scorerPrompt() {
   let scoreType = input.question("Enter 0, 1, or 2: ");
 }
 
+
 function transform() {};
 
 let newPointStructure;
 
 function runProgram() {
    initialPrompt();
+   scorerPrompt();
    
 }
 
