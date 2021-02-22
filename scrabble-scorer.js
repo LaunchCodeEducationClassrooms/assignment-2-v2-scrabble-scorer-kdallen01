@@ -74,7 +74,7 @@ function scrabbleScore(word) {
 
 //Everything between brackets was added 
 const scoringAlgorithms = [
-  {name:"Simple", description:"Each letter is worth 1 point.", scorerFunction:simpleScore(enteredWord)},{name:"Vowel Bonus", description:"Vowels are worth 3 points.", scorerFunction:vowelBonusScore(enteredWord)}, {name:"Scabble", description:"Uses Scrabble point system.", scorerFunction:oldScrabbleScorer(enteredWord)}
+  {name:"Simple", description:"Each letter is worth 1 point.", scorerFunction:function(){return simpleScore(enteredWord)}},{name:"Vowel Bonus", description:"Vowels are worth 3 points.", scorerFunction:function(){return vowelBonusScore(enteredWord)}}, {name:"Scabble", description:"Uses Scrabble point system.", scorerFunction:function(){return oldScrabbleScorer(enteredWord)}}
 ];
 
 let scoreType = ""
@@ -97,17 +97,9 @@ let newPointStructure;
 function runProgram() {
    initialPrompt();
    scorerPrompt();
-  if (Number(scoreType) === 0) {
-    simpleScore(enteredWord)
-  } else if (Number(scoreType) === 1) {
-    vowelBonusScore(enteredWord)
-  } else {
-    oldScrabbleScorer(enteredWord)
   
-  }
-  console.log(score);
-   console.log(`Score for '${enteredWord}': ${score}`);
-   
+  console.log(`Score for '${enteredWord}': ${scoringAlgorithms[scoreType].scorerFunction(enteredWord)}`);
+ 
 }
 
 // Don't write any code below this line //
