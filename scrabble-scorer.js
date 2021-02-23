@@ -73,14 +73,20 @@ function scrabbleScore(word) {
   word = word.toUpperCase()
   let score = "";
   for (i = 0; i < word.length; i++) {
-    sore =+ score;
-  }
-  return Number(score);
+    console.log("You have to be kidding!")
+    for (pointValue in newPointStructure) {
+      //if newPointStructure[pointValue].includes(word[i])) {
+        score =+ newPointStructure;
+    console.log(score);
+    //  }
+    }
+  } 
+  return score;
 }
 
 //Everything between brackets was added 
 const scoringAlgorithms = [
-  {name:"Simple", description:"Each letter is worth 1 point.", scorerFunction:function(){return simpleScore(enteredWord)}},{name:"Vowel Bonus", description:"Vowels are worth 3 points.", scorerFunction:function(){return vowelBonusScore(enteredWord)}}, {name:"Scabble", description:"Uses Scrabble point system.", scorerFunction:function(){return scrabbleScore(enteredWord)}}
+  {name:"Simple", description:"Each letter is worth 1 point.", scorerFunction:function(){return simpleScore(enteredWord)}},{name:"Vowel Bonus", description:"Vowels are worth 3 points.", scorerFunction:function(){return vowelBonusScore(enteredWord)}}, {name:"Scrabble", description:"Uses Scrabble point system.", scorerFunction:function(){return scrabbleScore(enteredWord)}}
 ];
 
 let scoreType = ""
@@ -95,11 +101,28 @@ function scorerPrompt() {
 
 
 function transform(oldPointStructure) {
-  for (i = 0; i < oldPointStructure.length; i++) {
-    for (j = 0; j < oldPointStructure[i].length; j++) {
-      oldPointStructure[i][j] = oldPointStructure[i];
+  let oldNewPointStructure = [];
+  for (pointValue in oldPointStructure) {
+    for (i = 0; i < oldPointStructure[pointValue].length; i++) {
+      oldNewPointStructure[oldPointStructure[pointValue][i].toLowerCase()] = pointValue;
     }
-  } 
+  }
+  oldPointStructure = oldNewPointStructure; 
+  return oldPointStructure;
+  
+  
+  //console.log("HELP!");
+  //for (pointValue in oldPointStructure) {
+  //   i = oldPointStructure[pointValue]
+  //   for (j = 0; j < oldPointStructure[pointValue].length; j++){
+  //   let k = oldPointStructure[pointValue][j];
+  //   oldPointStructure[k] = oldpointStructure[pointValue];
+  //for (i = 0; i < oldPointStructure.length; i++) {
+  //  for (j = 0; j < oldPointStructure[i].length; j++) {
+  //    oldPointStructure[i][j] = oldPointStructure[i];
+//      console.log("I'm here!");
+//}
+//  } 
 }
 
 let newPointStructure = transform(oldPointStructure);
