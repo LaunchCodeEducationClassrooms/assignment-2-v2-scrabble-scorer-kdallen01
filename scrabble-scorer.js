@@ -81,7 +81,7 @@ const scoringAlgorithms = [
 
 let scoreType = ""
 
-function scorerPompt() {
+function scorerPrompt() {
   console.log("0 - Simple: One point per character");
   console.log("1 - Vowel Bonus: Vowels are worth 3 points");
   console.log("2 - Scrabble: Uses scrabble point system");  scoreType = input.question("Enter 0, 1, or 2: ");
