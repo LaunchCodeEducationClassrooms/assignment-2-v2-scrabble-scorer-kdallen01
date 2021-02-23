@@ -21,7 +21,7 @@ function oldScrabbleScorer(word) {
 	  for (const pointValue in oldPointStructure) {
  
 		 if (oldPointStructure[pointValue].includes(word[i])) {
-			letterPoints += console.log(`Points for '${word[i]}': ${pointValue}\n`); //Edited so line prints
+			letterPoints += console.log(`Points for '${word[i]}': ${pointValue}\n`);
 		 }
  
 	  }
@@ -34,15 +34,11 @@ function oldScrabbleScorer(word) {
 let enteredWord = ""
 function initialPrompt() {
    console.log("Let's play some scrabble!");
-    enteredWord = input.question("\nEnter a word to score: "); //Added
+   enteredWord = input.question("\nEnter a word to score: ");
   return enteredWord;
- //oldScrabbleScorer(enteredWord); //Added
 };
 
-//Added following line
-//let score = "";
-//Edited below statement by adding everything between = and last ;.
-//Commented out original statement
+
 //let simpleScore;
 function simpleScore(word) {
   word = word.toUpperCase();
@@ -53,8 +49,7 @@ function simpleScore(word) {
   return Number(score);
 }
 
-//Edited below statement by adding everything between = and last ;.
-//Commented out original statement
+
 //let vowelBonusScore;
 function vowelBonusScore(word) {
   word = word.toUpperCase();
@@ -67,23 +62,13 @@ function vowelBonusScore(word) {
   return Number(score);
   }
 
-//Commented out original statement
+
 //let scrabbleScore;
 function scrabbleScore(word) {
   word = word.toLowerCase()
   let score = "";
   for (i = 0; i < word.length; i++) {
-    console.log("You have to be kidding!")
-    console.log(word[i]);
-    //for (word[i] in newPointStructure) {
-      //console.log(newPointStructure[word[i]]);
-      //console.log(newPointStructure[word[i]][0]);
       score =+ score + newPointStructure[word[i]];
-      //if newPointStructure[pointValue].includes(word[i])) {
-        //score =+ newPointStructure;
-    //console.log(score);
-    //  }
-    //}
   } 
   return score;
 }
@@ -94,12 +79,12 @@ const scoringAlgorithms = [
 ];
 
 let scoreType = ""
-//Added console.log {} and everything in between
+
 function scorerPrompt() {
   console.log("0 - Simple: One point per character");
   console.log("1 - Vowel Bonus: Vowels are worth 3 points");
-  console.log("2 - Scrabble: Uses scrabble point system");
-  scoreType = input.question("Enter 0, 1, or 2: ");
+  console.log("2 - Scrabble: Uses scrabble point system");  scoreType = input.question("Enter 0, 1, or 2: ");
+  if (scoreType ) 
   return Number(scoreType);
 }
 
@@ -112,28 +97,12 @@ function transform(oldPointStructure) {
     }
   }
   oldPointStructure = oldNewPointStructure; 
-  console.log(oldPointStructure);
   return oldPointStructure;
-  
-  
-  //console.log("HELP!");
-  //for (pointValue in oldPointStructure) {
-  //   i = oldPointStructure[pointValue]
-  //   for (j = 0; j < oldPointStructure[pointValue].length; j++){
-  //   let k = oldPointStructure[pointValue][j];
-  //   oldPointStructure[k] = oldpointStructure[pointValue];
-  //for (i = 0; i < oldPointStructure.length; i++) {
-  //  for (j = 0; j < oldPointStructure[i].length; j++) {
-  //    oldPointStructure[i][j] = oldPointStructure[i];
-//      console.log("I'm here!");
-//}
-//  } 
-}
+ }
 
 let newPointStructure = transform(oldPointStructure);
   
 
-//Added scorerPrompt() and console.log
 function runProgram() {
    initialPrompt();
    scorerPrompt();
