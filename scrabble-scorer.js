@@ -86,7 +86,7 @@ function scrabbleScore(word) {
 
 //Everything between brackets was added 
 const scoringAlgorithms = [
-  {name:"Simple", description:"Each letter is worth 1 point.", scorerFunction:function(){return simpleScore(enteredWord)}},{name:"Vowel Bonus", description:"Vowels are worth 3 points.", scorerFunction:function(){return vowelBonusScore(enteredWord)}}, {name:"Scrabble", description:"Uses Scrabble point system.", scorerFunction:function(){return scrabbleScore(enteredWord)}}
+  {name:"Simple", description:"Each letter is worth 1 point.", scoringFunction:function(){return simpleScore(enteredWord)}},{name:"Vowel Bonus", description:"Vowels are worth 3 points.", scoringFunction:function(){return vowelBonusScore(enteredWord)}}, {name:"Scrabble", description:"Uses Scrabble point system.", scoringFunction:function(){return scrabbleScore(enteredWord)}}
 ];
 
 let scoreType = ""
@@ -104,7 +104,7 @@ function transform(oldPointStructure) {
   let oldNewPointStructure = [];
   for (pointValue in oldPointStructure) {
     for (i = 0; i < oldPointStructure[pointValue].length; i++) {
-      oldNewPointStructure[oldPointStructure[pointValue][i].toLowerCase()] = pointValue;
+      oldNewPointStructure[oldPointStructure[pointValue][i].toLowerCase()] = Number(pointValue);
     }
   }
   oldPointStructure = oldNewPointStructure; 
