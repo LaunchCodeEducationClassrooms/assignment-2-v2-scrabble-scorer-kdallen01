@@ -75,7 +75,7 @@ function scrabbleScore(word) {
 
 //Everything between brackets was added 
 const scoringAlgorithms = [
-  {name:"Simple", description:"Each letter is worth 1 point.", scoringFunction:function(){return simpleScore(enteredWord)}},{name:"Vowel Bonus", description:"Vowels are worth 3 points.", scoringFunction:function(){return vowelBonusScore(enteredWord)}}, {name:"Scrabble", description:"Uses Scrabble point system.",scoringFunction:function(){return scrabbleScore(enteredWord)}}
+  {name:"Simple", description:"Each letter is worth 1 point.", scoringFunction:simpleScore},{name:"Vowel Bonus", description:"Vowels are worth 3 points.", scoringFunction:vowelBonusScore}, {name:"Scrabble", description:"Uses Scrabble point system.",scoringFunction:scrabbleScore}
 ];
 
 let scoreType = ""
