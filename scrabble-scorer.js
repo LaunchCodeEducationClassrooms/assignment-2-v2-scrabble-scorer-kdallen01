@@ -75,12 +75,13 @@ function scrabbleScore(word) {
 
 //Everything between brackets was added 
 const scoringAlgorithms = [
-  {name:"Simple", description:"Each letter is worth 1 point.", scoringFunction:function(){return simpleScore(enteredWord)}},{name:"Vowel Bonus", description:"Vowels are worth 3 points.", scoringFunction:function(){return vowelBonusScore(enteredWord)}}, {name:"Scrabble", description:"Uses Scrabble point system.", scoringFunction:function(){return scrabbleScore(enteredWord)}}
+  //{name:"Simple", description:"Each letter is worth 1 point.", scoringFunction:function(){return simpleScore(enteredWord)}},{name:"Vowel Bonus", description:"Vowels are worth 3 points.", scoringFunction:function(){return vowelBonusScore(enteredWord)}}, {name:"Scrabble", description:"Uses Scrabble point system.", scoringFunction:function(){return scrabbleScore(enteredWord)}}
+  {name:"Simple", description:"Each letter is worth 1 point.", scoringFunction:function(){return simpleScore(enteredWord)}}
 ];
 
 let scoreType = ""
 
-function scorerPrompt() {
+function scorerPompt() {
   console.log("0 - Simple: One point per character");
   console.log("1 - Vowel Bonus: Vowels are worth 3 points");
   console.log("2 - Scrabble: Uses scrabble point system");  scoreType = input.question("Enter 0, 1, or 2: ");
