@@ -70,16 +70,20 @@ function vowelBonusScore(word) {
 //Commented out original statement
 //let scrabbleScore;
 function scrabbleScore(word) {
-  word = word.toUpperCase()
+  word = word.toLowerCase()
   let score = "";
   for (i = 0; i < word.length; i++) {
     console.log("You have to be kidding!")
-    for (pointValue in newPointStructure) {
+    console.log(word[i]);
+    //for (word[i] in newPointStructure) {
+      //console.log(newPointStructure[word[i]]);
+      //console.log(newPointStructure[word[i]][0]);
+      score =+ score + newPointStructure[word[i]];
       //if newPointStructure[pointValue].includes(word[i])) {
-        score =+ newPointStructure;
-    console.log(score);
+        //score =+ newPointStructure;
+    //console.log(score);
     //  }
-    }
+    //}
   } 
   return score;
 }
@@ -108,6 +112,7 @@ function transform(oldPointStructure) {
     }
   }
   oldPointStructure = oldNewPointStructure; 
+  console.log(oldPointStructure);
   return oldPointStructure;
   
   
@@ -133,7 +138,7 @@ function runProgram() {
    initialPrompt();
    scorerPrompt();
   
-  console.log(`Score for '${enteredWord}': ${scoringAlgorithms[scoreType].scorerFunction(enteredWord)}`);
+  console.log(`Score for '${enteredWord}': ${scoringAlgorithms[scoreType].scoringFunction(enteredWord)}`);
  
 }
 
