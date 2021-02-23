@@ -98,11 +98,11 @@ function transform(oldPointStructure) {
     }
   }
   oldPointStructure = oldNewPointStructure;
-  oldPointStructure[" "] = 0
   return oldPointStructure;
  }
 
 let newPointStructure = transform(oldPointStructure);
+newPointStructure[" "] = 0
   
 
 function runProgram() {
