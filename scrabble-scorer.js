@@ -31,15 +31,16 @@ function oldScrabbleScorer(word) {
 
 // your job is to finish writing these functions and variables that we've named //
 // don't change the names or your program won't work as expected. //
-let enteredWord = ""
+let enteredWord = "";
 function initialPrompt() {
    console.log("Let's play some scrabble!");
-   enteredWord = input.question("\nEnter a word to score: ");
+   while (!enteredWord.match(/^[a-z][a-z\s]+$/i)) {
+    enteredWord = input.question("\nEnter a word to score: ");
+   }
   return enteredWord;
 };
 
 
-//let simpleScore;
 function simpleScore(word) {
   word = word.toUpperCase();
   let score = "";
@@ -50,7 +51,6 @@ function simpleScore(word) {
 }
 
 
-//let vowelBonusScore;
 function vowelBonusScore(word) {
   word = word.toUpperCase();
   let score = "";
@@ -63,7 +63,6 @@ function vowelBonusScore(word) {
   }
 
 
-//let scrabbleScore;
 function scrabbleScore(word) {
   word = word.toLowerCase()
   let score = "";
@@ -73,7 +72,7 @@ function scrabbleScore(word) {
   return score;
 }
 
-//Everything between brackets was added 
+
 const scoringAlgorithms = [
   {name:"Simple", description:"Each letter is worth 1 point.", scoringFunction:simpleScore},{name:"Vowel Bonus", description:"Vowels are worth 3 points.", scoringFunction:vowelBonusScore}, {name:"Scrabble", description:"Uses Scrabble point system.",scoringFunction:scrabbleScore}
 ];
@@ -83,8 +82,10 @@ let scoreType = ""
 function scorerPrompt() {
   console.log("0 - Simple: One point per character");
   console.log("1 - Vowel Bonus: Vowels are worth 3 points");
-  console.log("2 - Scrabble: Uses scrabble point system");  scoreType = input.question("Enter 0, 1, or 2: ");
-  if (scoreType ) 
+  console.log("2 - Scrabble: Uses scrabble point system");
+  while (!scoreType.match(/^[0-2]+$/)) {
+  scoreType = input.question("Enter 0, 1, or 2: ");
+  }
   return Number(scoreType);
 }
 
@@ -96,7 +97,8 @@ function transform(oldPointStructure) {
       oldNewPointStructure[oldPointStructure[pointValue][i].toLowerCase()] = Number(pointValue);
     }
   }
-  oldPointStructure = oldNewPointStructure; 
+  oldPointStructure = oldNewPointStructure;
+  oldPointStructure[" "] = 0
   return oldPointStructure;
  }
 
